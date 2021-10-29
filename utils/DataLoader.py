@@ -21,7 +21,8 @@ class ImageDataset(Dataset):
         f=open(img_path,"r")
         img_set=[]
         for t in f:
-            img_set.append(t[:len(t)-1]) #remove character "\n" at the end of each line
+            #remove character "\n" at the end of each line
+            img_set.append(t[:len(t)-1]) 
         self.img_set=np.asarray(img_set)
         f.close()
 
@@ -46,14 +47,14 @@ class ImageDataset(Dataset):
 
         return x_kp, image, y
 
-image_data_train = ImageDataset(X_train_path, Y_train_path, img_train_path)
+image_data_train = ImageDataset('../data/X_train.txt', '../data/Y_train.txt', '../data/img_train_path.txt')
 image_data_val = ImageDataset(X_validation_path, Y_validation_path, img_validation_path)
 image_data_test = ImageDataset(X_test_path, Y_test_path, img_test_path)
 
 #training dataloader
 dataloader_train = DataLoader(dataset=image_data_train, batch_size, shuffle= True, num_workers)
 
-#validation ddataloader
+#validation dataloader
 dataloader_val = DataLoader(dataset=image_data_val, batch_size, shuffle= False, num_workers)
 
 #test dataloader
