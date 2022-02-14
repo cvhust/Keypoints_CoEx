@@ -17,7 +17,7 @@ class Classifier(nn.Module):
         self.ln4 = nn.Linear(86, 128)
         self.ln5 = nn.Linear(128, 64)
         self.ln6 = nn.Linear(64, 32)
-        self.ln8 = nn.Linear(32,15)
+        self.ln8 = nn.Linear(32, 32)
         
 
     def forward(self, kp):
